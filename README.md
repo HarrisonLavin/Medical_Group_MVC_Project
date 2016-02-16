@@ -6,6 +6,9 @@ Harrison.Lavin@gmail.com
 Holly Peck
 holly.m.peck@gmail.com
 
+Jacob Levitin
+jlevitin92@gmail.com
+
 Doctor:
   Has name
   Has age
