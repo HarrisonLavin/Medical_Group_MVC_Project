@@ -18,9 +18,16 @@ while action != "exit"
       patient = gets.chomp
       Appointment.new(time: time, doctor: doctor_name, patient: patient_name)
     when "doctor"
-      #Create THE DOC-TOOOOOOR
+      puts "What is the name of the Doctor to add?"
+      doctor_name = gets.chomp
+      Doctor.new(doctor_name)
     when "patient"
       #Create the patient
+      puts "What is the name of the Patient to add?"
+      patient_name = gets.chomp
+      Patient.new(patient_name)
+    else
+      "ERROR: Not a valid resource, try doctor, appointment, or patient"
     end
   when "review"
     puts "What resource would you like to review?"
