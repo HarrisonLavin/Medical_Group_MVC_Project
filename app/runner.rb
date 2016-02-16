@@ -10,7 +10,13 @@ while action != "exit"
     resource = gets.chomp
     case resource
     when "appointment"
-      #DO THE THING, CREATE THE APPOINTMENT
+      puts "What time?"
+      time = gets.chomp
+      puts "With which Doctor?"
+      doctor = gets.chomp
+      puts "For which Patient?"
+      patient = gets.chomp
+      Appointment.new(time: time, doctor: doctor_name, patient: patient_name)
     when "doctor"
       #Create THE DOC-TOOOOOOR
     when "patient"
