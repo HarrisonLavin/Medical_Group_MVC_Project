@@ -1,5 +1,5 @@
 class Doctor
-
+extend Findable
   attr_reader :name
   @@all = []
 

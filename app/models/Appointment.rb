@@ -17,5 +17,11 @@ class Appointment
     @@all
   end
 
+  def find_appoint(date, doctor, patient)
+    @@all.find do |appt|
+      appt.date == date && appt.doctor.name.upcase == doctor.upcase && appt.patient.name.upcase == patient.upcase
+    end
+  end
+
 
 end

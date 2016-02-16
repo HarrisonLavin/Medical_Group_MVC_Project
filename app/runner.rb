@@ -67,11 +67,30 @@ while action != "exit"
     resource = gets.chomp
     case resource
     when "appointment"
-      #DO THE THING, CREATE THE APPOINTMENT
+      puts "What date?"
+      date = gets.chomp
+      puts "With which Doctor?"
+      doctor = gets.chomp
+      puts "For which Patient?"
+      patient = gets.chomp
+      appointment = Appointment.find_appoint(date, doctor, patient)
+      removed_appt= Appointment.all.delete(appointment)
+      puts "#{removed_appt.patient.name}'s appointment with #{removed_appt.doctor.name} on date #{removed_appt.date} has been cancelled."
     when "doctor"
       #Create THE DOC-TOOOOOOR
+      puts "Which Doctor?"
+      doctor_name = gets.chomp.upcase
+      doctor = Doctor.find_by_name(doctor_name)
+      removed_doc = Doctor.all.delete(doctor)
+      puts "#{removed_doc} has been fired."
     when "patient"
       #Create the patient
+       puts "Which Patient?"
+      patient_name = gets.chomp.upcase
+      patient = Doctor.find_by_name(patient_name)
+      removed_pat = Doctor.all.delete(patient)
+      puts "#{removed_pat} has been dropped from the group."
+
     end
   else
     puts "ERROR: Valid actions are Create, Review, Update, Destory"
