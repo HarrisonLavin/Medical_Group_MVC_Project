@@ -7,9 +7,9 @@ class Appointment
     # @time = time
     # @doctor = doctor
     # @patient = patient
-    @time = information[:time]
-    @doctor = information[:doctor]
-    @patient = information[:patient]
+    @time = information.fetch(:time)
+    @doctor = information.fetch(:doctor)
+    @patient = information.fetch(:patient)
     @@all << self
   end
 

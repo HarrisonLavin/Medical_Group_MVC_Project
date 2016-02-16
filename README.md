@@ -12,7 +12,6 @@ jlevitin92@gmail.com
 Doctor:
   Has name
   Has age
-  Has Specialties
   Has_Many Appointments
   Has_many patients through appointments
 
@@ -29,18 +28,25 @@ Patients
   Has_Many Doctors through appointments
 
 Actions:
-  Create Appointment
-  Reschedule Appointment
-  Check-In Appointment
-  Cancel Appointment
-  Hire Doctor
-  Fire Doctor
-  Update Doc Certifications
-  Join Patient
-  Leave Patient
-  update Chart
-  display Patients for given Doctor
-  display Doctors for Given patients
-  Display all appts for Date
-  Display all appts for Doc
-  Display all appts for Patient
+  Create Stuff:
+    Create Appointment
+    Hire Doctor
+    Add Patient
+  Review Stuff:
+    Display Patients for given Doctor
+    Display Doctors for Given patients
+    Display all appts for Date
+    Display all appts for Doc
+    Display all appts for Patient
+    Display Chart for Patient
+  Update Stuff:
+    Reschedule Appointment
+    Check-In Appointment
+    Update Patient Chart
+  Destroy Stuff:
+    Cancel Appointment
+    Fire Doctor
+    Drop Patient
+
+    
+
