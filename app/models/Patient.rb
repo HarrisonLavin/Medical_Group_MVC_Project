@@ -1,7 +1,7 @@
 class Patient
 
   attr_reader :name, :chart
-  @@all
+  @@all = []
 
   def initialize(name)
     @name = name

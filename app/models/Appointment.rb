@@ -1,6 +1,6 @@
 class Appointment
   attr_accessor :status, :time, :doctor, :patient
-  @@all
+  @@all = []
   
   def initialize(information)
     @status = "scheduled"
