@@ -20,7 +20,7 @@ class Doctor
 
   def appointments
     Appointments.all.find_all do |appt|
-      appt.docotr == self
+      appt.doctor == self
     end
   end
 
