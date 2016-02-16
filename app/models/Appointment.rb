@@ -1,5 +1,6 @@
 class Appointment
-  attr_accessor :status, :time, :doctor, :patient
+  extend Findable
+  attr_accessor :status, :date, :doctor, :patient
   @@all = []
   
   def initialize(information)
@@ -7,7 +8,7 @@ class Appointment
     # @time = time
     # @doctor = doctor
     # @patient = patient
-    @time = information.fetch(:time)
+    @date = information.fetch(:date)
     @doctor = information.fetch(:doctor)
     @patient = information.fetch(:patient)
     @@all << self

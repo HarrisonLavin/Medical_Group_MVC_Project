@@ -1,5 +1,6 @@
 class Patient
 
+extend Findable
   attr_reader :name, :chart
   @@all = []
 

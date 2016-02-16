@@ -10,13 +10,13 @@ while action != "exit"
     resource = gets.chomp
     case resource
     when "appointment"
-      puts "What time?"
-      time = gets.chomp
+      puts "What date?"
+      date = gets.chomp
       puts "With which Doctor?"
       doctor = gets.chomp
       puts "For which Patient?"
       patient = gets.chomp
-      Appointment.new(time: time, doctor: doctor_name, patient: patient_name)
+      Appointment.new(date: date, doctor: doctor_name, patient: patient_name)
     when "doctor"
       puts "What is the name of the Doctor to add?"
       doctor_name = gets.chomp
@@ -34,11 +34,13 @@ while action != "exit"
     resource = gets.chomp
     case resource
     when "appointment"
-      #DO THE THING, CREATE THE APPOINTMENT
+      Appointment.all.each do |appt|
+        puts "#{appt.patient.name} is scheduled to see #{appt.doctor.name} on date #{appt.date}"
+      end
     when "doctor"
-      #Create THE DOC-TOOOOOOR
+      Doctor.all.each {|doc| puts doc.name}
     when "patient"
-      #Create the patient
+      Patient.all.each {|pat| puts pat.name}
     end
   when "update"
     puts "What resource would you like to update?"
@@ -46,10 +48,19 @@ while action != "exit"
     case resource
     when "appointment"
       #DO THE THING, CREATE THE APPOINTMENT
-    when "doctor"
-      #Create THE DOC-TOOOOOOR
+      puts "Check-In or reschedule?"
+      choice = gets.chomp.upcase
+      case choice
+      when "CHECK-IN"
+        #And then a miracle happens, wherein we select a given appt, and reschedule
     when "patient"
       #Create the patient
+      puts "Which Patient?"
+      patient_name = gets.chomp.upcase
+      patient= Patient.find_by_name(patient_name)
+      puts "What is the Patient's status?"
+      status = gets.chomp
+      patient.add_to_chart(status)
     end
   when "destory" 
     puts "What resource would you like to destroy?"

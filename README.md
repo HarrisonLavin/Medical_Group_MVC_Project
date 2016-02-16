@@ -35,14 +35,12 @@ Actions:
   Review Stuff:
     Display Patients for given Doctor
     Display Doctors for Given patients
-    Display all appts for Date
-    Display all appts for Doc
-    Display all appts for Patient
+    Display all appts
     Display Chart for Patient
   Update Stuff:
-    Reschedule Appointment
-    Check-In Appointment
-    Update Patient Chart
+    -Reschedule Appointment
+    -Check-In Appointment
+    -Update Patient Chart
   Destroy Stuff:
     Cancel Appointment
     Fire Doctor
