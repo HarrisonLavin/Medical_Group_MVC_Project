@@ -1,11 +1,10 @@
 class Doctor
 
-  attr_reader :name, :age, :specialties
+  attr_reader :name, :specialties
   @@all
 
   def initialize(name)
     @name = name
-    @age = 0
     @specialties = []
     @@all << self
   end
