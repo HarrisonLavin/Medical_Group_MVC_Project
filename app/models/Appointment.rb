@@ -18,9 +18,7 @@ class Appointment
   end
 
   def find_appoint(date, doctor, patient)
-    @@all.find do |appt|
-      appt.date == date && appt.doctor.name.upcase == doctor.upcase && appt.patient.name.upcase == patient.upcase
-    end
+    find_by_field(date, date) & find_by_field(doctor, doctor) & find_by_field(patient, patient)
   end
 
 

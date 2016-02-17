@@ -48,16 +48,31 @@ while action != "exit"
     case resource
     when "appointment"
       #DO THE THING, CREATE THE APPOINTMENT
+      puts "Specify the appointment you would like to update:"
+      puts "What date?"
+      date = gets.chomp
+      puts "With which Doctor?"
+      doctor = gets.chomp
+      puts "For which Patient?"
+      patient = gets.chomp
+      appt = Appointment.find_appoint(date, doctor, patient)
       puts "Check-In or reschedule?"
       choice = gets.chomp.upcase
       case choice
       when "CHECK-IN"
         #And then a miracle happens, wherein we select a given appt, and reschedule
+        appt.status("Checked-in")
+        puts "#{appt.patient.name} is #{appt.status} to see #{appt.doctor.name}."
+      when "RESCHEDULE"
+        puts "Reschedule to when?"
+        appt.date = gets.chomp
+        puts "The appointment has been rescheduled to #{appt.date}."
+      end
     when "patient"
       #Create the patient
       puts "Which Patient?"
       patient_name = gets.chomp.upcase
-      patient= Patient.find_by_name(patient_name)
+      patient= Patient.find_by_field(patient_name, name)
       puts "What is the Patient's status?"
       status = gets.chomp
       patient.add_to_chart(status)
@@ -80,14 +95,14 @@ while action != "exit"
       #Create THE DOC-TOOOOOOR
       puts "Which Doctor?"
       doctor_name = gets.chomp.upcase
-      doctor = Doctor.find_by_name(doctor_name)
+      doctor = Doctor.find_by_field(doctor_name, name)
       removed_doc = Doctor.all.delete(doctor)
       puts "#{removed_doc} has been fired."
     when "patient"
       #Create the patient
        puts "Which Patient?"
       patient_name = gets.chomp.upcase
-      patient = Doctor.find_by_name(patient_name)
+      patient = Doctor.find_by_field(patient_name, name)
       removed_pat = Doctor.all.delete(patient)
       puts "#{removed_pat} has been dropped from the group."
 
