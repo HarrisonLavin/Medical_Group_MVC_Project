@@ -1,8 +1,7 @@
 # Appointment Spec 
 # ===================
-
+require "pry"
 require "spec_helper"
-  binding.pry
   describe Appointment do 
     describe "#initialize=" do
       let(:doctor) {Doctor.new("Dr. Love")}
@@ -21,6 +20,9 @@ require "spec_helper"
 
       appointment.date = date
       expect(appointment.date).to eq ("Oct 31st")
+    
+    require "pry"
+
     end
 
 
