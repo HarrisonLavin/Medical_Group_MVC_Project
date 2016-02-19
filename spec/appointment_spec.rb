@@ -21,7 +21,7 @@ require "spec_helper"
       appointment.date = date
       expect(appointment.date).to eq ("Oct 31st")
     
-    require "pry"
+    binding.pry
 
     end
 
