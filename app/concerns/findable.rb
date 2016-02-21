@@ -7,8 +7,8 @@ module Findable
   end
 
   def find_or_create_by_name(name)
-    if name 
+    if name
     end
   end
-  
+
 end
