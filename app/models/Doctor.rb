@@ -1,9 +1,10 @@
 class Doctor
 extend Findable
-  attr_reader :name
+  attr_reader :name, :id
   @@all = []
 
-  def initialize(name)
+  def initialize(name, id=nil)
+    @id = id
     @name = name
     @@all << self
   end
