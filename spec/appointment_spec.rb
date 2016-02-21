@@ -21,13 +21,24 @@ require "spec_helper"
 
       appointment.date = date
       expect(appointment.date).to eq ("Oct 31st")
-    
-    binding.pry
+    end
+  end
 
+  describe ".all" do 
+    before do 
+      Appointment.all.clear
+      Appointment.new
+      Appointment.new
     end
 
-
+    it "returns all of the appointments that have been
+    initialized" do 
+    expect(Appointment.all.count).to eq(2)
+    end
   end
+
+  
+
 end
 
 
