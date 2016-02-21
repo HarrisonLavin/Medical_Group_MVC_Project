@@ -13,13 +13,22 @@ extend Findable
 
   def self.create_table
     sql = <<-SQL
-      CREATE TABLE IF NOT EXISTS patient (
+      CREATE TABLE IF NOT EXISTS patients (
         id INTEGER PRIMARY KEY
         name TEXT
         chart TEXT
       )
       SQL
     DB[:conn].execute(sql)
+  end
+
+  def save
+    sql = <<-SQL
+      INSERT INTO patient (name, chart)
+      VALUES (?, ?)
+      SQL
+    DB[:conn].execute(sql, self.name, self.chart)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM patients")[0][0]
   end
 
   def self.all
