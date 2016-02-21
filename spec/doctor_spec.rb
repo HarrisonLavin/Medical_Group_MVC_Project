@@ -9,12 +9,18 @@ describe Doctor do
     let(:doctor) {Doctor.new("Dr. Love")}
     let(:doctor) {Doctor.new("Dr. Beverly Crusher")}
 
-describe ".find_by_name" do 
-  let!(:doctor){Doctor.new("Dr. Love")}
-  let!(:doctor){Doctor.new("Dr. Beverly Crusher")
-  end
+    it "should add the appointment to the doctor" do
+      ####
+
+
+
+
+
+  describe ".find_by_name" do 
+    let(:doctor){Doctor.new("Dr. Love")}
+    let(:doctor){Doctor.new("Dr. Beverly Crusher")
 
   it "finds the doctor by name" do
-    expect(Doctor.find_by_name("Dr. Love")).to eq ()
+    expect(Doctor.find_by_name("Dr. Love")).to eq (doctor)
   end
 end

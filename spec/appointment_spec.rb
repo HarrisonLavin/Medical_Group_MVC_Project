@@ -15,7 +15,6 @@ require "spec_helper"
       # variable to trues
       expect(appointment.doctor).to eq(doctor)
       # trigger
-
       appointment.patient = patient
       expect(appointment.patient).to eq(patient)
 
@@ -37,7 +36,19 @@ require "spec_helper"
     end
   end
 
-  
+  describe ".find_appoint" do
+    let(:doctor) { Doctor.new("Dr. Love")}
+    let(:date) {Date.new("Oct 31st")}
+    let(:patient){Patient.new("Holly")}
+
+    it "finds the appointment" do
+      Appointment.all.clear
+      doctor 
+      patient
+      date
+      expect(Appointment.find_appoint("doctor")).to eq (doctor)
+    end
+  end
 
 end
 

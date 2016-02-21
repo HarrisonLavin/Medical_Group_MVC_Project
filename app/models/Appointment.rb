@@ -18,7 +18,9 @@ class Appointment
   end
 
   def find_appoint(date, doctor, patient)
-    find_by_field(date, date) & find_by_field(doctor, doctor) & find_by_field(patient, patient)
+    find_by_field(date, date) & 
+    find_by_field(doctor, doctor) & 
+    find_by_field(patient, patient)
   end
 
 
