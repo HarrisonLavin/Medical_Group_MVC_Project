@@ -12,6 +12,7 @@ require "spec_helper"
 
     it "sets the correct doctor and patient" do
       appointment.doctor = doctor
+      # variable to trues
       expect(appointment.doctor).to eq(doctor)
       # trigger
 
