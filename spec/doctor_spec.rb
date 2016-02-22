@@ -22,6 +22,23 @@ describe Doctor do
     end
   end
 
+  describe "#create_table" do 
+    it "creates the doctor table in the database" do 
+      Doctor.create_table
+      table_check_sql = "SELECT tbl_name FROM sqlite_master WHERE type='table' AND tbl_name='doctors';"
+      expect(DB[:conn].execute(table_check_sql)[0]).to eq(['doctors'])
+    end
+  end
+
+  describe "#save" do 
+    it "saves an instance of Doctor class in the table" do 
+      Doctor.create_table
+      dr_love.save
+      expect(dr_love.id).to eq(1)
+      expect(DB[:conn].execute("SELECT * FROM doctors")).to eq([[1, "Dr Love", "???"]])
+    end
+  end
+
   describe "#find_by_name" do 
     let(:doctor){Doctor.new("Dr. Love")}
     let(:doctor){Doctor.new("Dr. Beverly Crusher")
