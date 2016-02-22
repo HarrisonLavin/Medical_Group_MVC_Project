@@ -31,8 +31,8 @@ require "spec_helper"
   end
 
   describe "#save" do 
-    let(:doctor) {Doctor.new("Dr. Love")}
-      let(:patient) {Patient.new("Holly")}
+    let(:doctor) {Doctor.new("Dr. Love").save}
+      let(:patient) {Patient.new("Holly").save}
       let(:day) {"Oct 31st"}
       let(:appointment) {Appointment.new ({doctor:doctor,
         patient:patient, day:day})}

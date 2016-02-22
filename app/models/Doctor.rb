@@ -36,7 +36,7 @@ extend Findable
   def save
     sql = <<-SQL
       INSERT INTO doctor (name)
-      VALUES ?
+      VALUES (?)
       SQL
     DB[:conn].execute(sql, self.name)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM doctors")[0][0]
