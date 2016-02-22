@@ -31,9 +31,16 @@ require "spec_helper"
   end
 
   describe "#save" do 
+    let(:doctor) {Doctor.new("Dr. Love")}
+      let(:patient) {Patient.new("Holly")}
+      let(:day) {"Oct 31st"}
+      let(:appointment) {Appointment.new ({doctor:doctor,
+        patient:patient, day:day})}
+
     it "saves an instance of appointment class in the table" do 
+      oct_31= appointment
+      # binding.pry
       Appointment.create_table
-      
       oct_31.save
       expect(oct_31.id).to eq(1)
       expect(DB[:conn].execute("SELECT * FROM appointments")).to eq([[1, "Oct 31st", "booked"]])

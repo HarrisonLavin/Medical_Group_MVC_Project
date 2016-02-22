@@ -37,10 +37,10 @@ class Appointment
 
   def save
     sql = <<-SQL
-      INSERT INTO appointments (name, day, doctor, patient)
-      VALUES (?, ?, ?, ?)
+      INSERT INTO appointments (day, doctor, patient)
+      VALUES (?, ?, ?)
       SQL
-    DB[:conn].execute(sql, self.name, self.chart)
+    DB[:conn].execute(sql, self.day, self.doctor, self.patient)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM patients")[0][0]
   end
 
