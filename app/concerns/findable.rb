@@ -6,9 +6,17 @@ module Findable
     end
   end
 
-  def find_or_create_by_name(name)
-    if name
+  def self.find_or_create_by(name:)
+    result = DB[:conn].execute("SELECT * FROM #{self}s WHERE name = ? LIMIT 1", name)
+    if !result.empty?
+      result_data = result[0]
+      result = self.new(name: result_data[1])
+      dog.id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+    else
+      dog = self.create(name: name, breed: breed)
     end
-  end
+    dog
+    # binding.pry
+  end 
 
 end

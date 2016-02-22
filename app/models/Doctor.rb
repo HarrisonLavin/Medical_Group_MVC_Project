@@ -21,6 +21,7 @@ extend Findable
   end
 
   def self.find_by_name(name)
+    #This needs to be changed to "find_or_create_by_name"
     sql = <<-SQL
       SELECT *
       FROM doctors
@@ -72,6 +73,20 @@ extend Findable
       self.new_from_db(row)
     end
   end
+
+  def self.find_or_create_by(name:)
+    result = DB[:conn].execute("SELECT * FROM doctors WHERE name = #{name}")
+    if !result.empty?
+      result_data = result[0]
+      doct = Doctor.new(name: result_data[1])
+      doct.id = DB[:conn].execute("SELECT last_insert_rowid() FROM doctors")[0][0]
+    else
+      doctor = Doctor.create(name: name)
+    end
+    doctor
+    # binding.pry
+  end 
+
 
   def appointments
     Appointments.all.find_all do |appt|

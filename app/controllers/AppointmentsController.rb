@@ -1,18 +1,22 @@
 class AppointmentController
 
 
-  def self.create
+  def create
     puts "What date?"
     date = gets.chomp
     puts "With which Doctor?"
-    doctor = gets.chomp
+    doctor_name = gets.chomp
+    doctor = Doctor.find_or_create_by_name (doctor_name)
     puts "For which Patient?"
-    patient = gets.chomp
-    Appointment.new(date: date, doctor: doctor_name, patient: patient_name)
+    patient_name = gets.chomp
+    patient= Patient.find_by_name(patient_name)
+    binding.pry
+    appt= Appointment.new(day: date, doctor: doctor, patient: patient)
+    puts "Great, you've scheduled an appoint for #{appt.patient.name} to see  #{appt.doctor.name} on #{appt.day}"
   end
 
 
-  def self.update
+  def update
     puts "Specify the appointment you would like to update:"
     puts "What date?"
     date = gets.chomp
@@ -35,7 +39,7 @@ class AppointmentController
     end
   end
 
-  def self.destroy
+  def destroy
     puts "What date?"
     date = gets.chomp
     puts "With which Doctor?"
