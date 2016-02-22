@@ -39,8 +39,9 @@ require "spec_helper"
 
     it "saves an instance of appointment class in the table" do 
       oct_31= appointment
-      # binding.pry
+
       Appointment.create_table
+      binding.pry
       oct_31.save
       expect(oct_31.id).to eq(1)
       expect(DB[:conn].execute("SELECT * FROM appointments")).to eq([[1, "Oct 31st", "booked"]])
