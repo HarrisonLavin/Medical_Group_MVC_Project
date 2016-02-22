@@ -55,7 +55,6 @@ describe Doctor do
 
     it "finds all the doctor's appointments" do 
       Appointment.all.clear
-      binding.pry
     end
   end
 end

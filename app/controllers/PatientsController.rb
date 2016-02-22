@@ -1,6 +1,5 @@
 class PatientController
 
-
   def self.create
     puts "What is the name of the Patient to add?"
       patient_name = gets.chomp
