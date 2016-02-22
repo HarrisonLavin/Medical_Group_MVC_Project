@@ -1,10 +1,19 @@
 class Doctor
 extend Findable
-  attr_reader :name, :id
+  attr_reader :name
 
-  def initialize(name, id=nil)
-    @id = id
+  def initialize(name)
     @name = name
+  end
+
+  def self.find_by_id(id)
+    sql = <<-SQL
+      SELECT * FROM doctors where id = doctor.id
+    SQL
+    row= DB[:conn].execute(sql)
+    doc = Doctor.new_from_db(row)
+    @id = id
+    doc
   end
 
   def self.create_table
@@ -48,9 +57,7 @@ extend Findable
   end
 
   def self.new_from_db(row)
-    new_doctor = self.new
-    new_doctor.id = row[0]
-    new_doctor.name = row[1]
+    new_doctor = self.new(row[1])
     new_doctor
   end
 

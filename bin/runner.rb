@@ -34,9 +34,9 @@ while action != "exit"
           puts "#{appt.patient.name} is scheduled to see #{appt.doctor.name} on date #{appt.date}"
         end
       when "doctor"
-        Doctor.all.each {|doc| puts doc.name}
+        Doctor.all.each {|doc| puts "-#{doc.name}"}
       when "patient"
-        Patient.all.each {|pat| puts pat.name}
+        Patient.all.each {|pat| puts "-#{pat.name}"}
       else
         puts "ERROR: Not a valid resource, try doctor, appointment, or patient"
       end
