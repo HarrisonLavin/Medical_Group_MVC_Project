@@ -16,11 +16,11 @@ class Appointment
   #   @@all
   # end
 
-  def find_appoint(day, doctor, patient)
-    find_by_field(day, day) &
-    find_by_field(doctor, doctor) &
-    find_by_field(patient, patient)
-  end
+  # def find_appoint(day, doctor, patient)
+  #   find_by_field(day, day) &
+  #   find_by_field(doctor, doctor) &
+  #   find_by_field(patient, patient)
+  # end
 
   def self.create_table
     sql = <<-SQL
@@ -61,6 +61,15 @@ class Appointment
       WHERE name = ?
       LIMIT 1
     SQL
-  end 
+  end
+
+  def self.find_appointment(appointment_id)
+    sql = <<-SQL
+      SELECT *
+      FROM appointments
+      WHERE appointment_id = ?
+      LIMIT 1
+    SQL
+  end
 
 end

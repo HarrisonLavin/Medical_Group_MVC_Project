@@ -8,7 +8,7 @@ extend Findable
     @id = id
     @name = name
     @chart = []
-    @@all << self
+    # @@all << self
   end
 
   def self.new_from_db(row)
@@ -32,10 +32,10 @@ extend Findable
 
   def save
     sql = <<-SQL
-      INSERT INTO patient (name, chart)
-      VALUES (?, ?)
+      INSERT INTO patients (name)
+      VALUES (?)
       SQL
-    DB[:conn].execute(sql, self.name, self.chart)
+    DB[:conn].execute(sql, self.name)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM patients")[0][0]
   end
 
@@ -76,5 +76,24 @@ extend Findable
   # def doctors
   #   appointments.map {|appt| appt.doctor}
   # end
+
+  def self.find_or_create_by(name)
+    result = DB[:conn].execute("SELECT * FROM patients WHERE name = ?")
+    if !result.empty?
+      result_data = result[0]
+      pati = Patient.new(result_data[1])
+      pati.id = DB[:conn].execute("SELECT last_insert_rowid() FROM patients")[0][0]
+    else
+      patient = Patient.create(name)
+      # binding.pry
+    end
+    patient
+    # binding.pry
+  end
+
+  def self.create(name)
+    patient = self.new(name)
+    patient.save
+  end
 
 end

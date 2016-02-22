@@ -8,7 +8,7 @@ extend Findable
   end
 
   def self.create_table
- 
+
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS doctors (
         id INTEGER PRIMARY KEY,
@@ -79,17 +79,18 @@ extend Findable
   end
 
   def self.find_or_create_by(name)
-    result = DB[:conn].execute("SELECT * FROM doctors WHERE name= ?", name)
+    result = DB[:conn].execute("SELECT * FROM doctors WHERE name = ?")
     if !result.empty?
       result_data = result[0]
       doct = Doctor.new(result_data[1])
       doct.id = DB[:conn].execute("SELECT last_insert_rowid() FROM doctors")[0][0]
     else
       doctor = Doctor.create(name)
+      # binding.pry
     end
     doctor
     # binding.pry
-  end 
+  end
 
 
   def appointments
