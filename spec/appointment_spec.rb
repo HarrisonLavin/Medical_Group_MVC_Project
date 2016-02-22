@@ -22,6 +22,23 @@ require "spec_helper"
     end
   end
 
+  describe "#create_table" do 
+    it "creates the appointment table in the database" do 
+      Appointment.create_table
+      table_check_sql = "SELECT tbl_name FROM sqlite_master WHERE type='table' AND tbl_name='appointments';"
+      expect(DB[:conn].execute(table_check_sql)[0]).to eq(['appointments'])
+    end
+  end
+
+  describe "#save" do 
+    it "saves an instance of appointment class in the table" do 
+      Appointment.create_table
+      oct_31.save
+      expect(oct_31.id).to eq(1)
+      expect(DB[:conn].execute("SELECT * FROM appointments")).to eq([[1, "Oct 31st", "booked"]])
+    end
+  end
+
   describe "#all" do 
     before do 
       Appointment.all.clear
