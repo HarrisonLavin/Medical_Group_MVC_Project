@@ -48,13 +48,13 @@ describe Doctor do
     end
   end
 
-  describe "#appointments" do
-    it "should return the doctors appointments"
-    let(:appointment) {Appointment.new("Oct 31st")}
-    let(:appointment) {Appointment.new("Nov 1st")}
+  # describe "#appointments" do
+  #   it "should return the doctors appointments"
+  #   let(:appointment) {Appointment.new("Oct 31st")}
+  #   let(:appointment) {Appointment.new("Nov 1st")}
 
-    it "finds all the doctor's appointments" do 
-      Appointment.all.clear
-    end
-  end
+  #   it "finds all the doctor's appointments" do 
+  #     Appointment.all.clear
+  #   end
+  # end
 end
