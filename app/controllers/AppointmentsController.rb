@@ -6,11 +6,11 @@ class AppointmentController
     date = gets.chomp
     puts "With which Doctor?"
     doctor_name = gets.chomp
-    doctor = Doctor.find_or_create_by(name: doctor_name)
+    binding.pry
+    doctor = Doctor.find_or_create_by(doctor_name).save
     puts "For which Patient?"
     patient_name = gets.chomp
-    patient= Patient.find_by_name(patient_name)
-    binding.pry
+    patient= Patient.find_by_name(patient_name).save
     appt= Appointment.new(day: date, doctor: doctor, patient: patient)
     puts "Great, you've scheduled an appoint for #{appt.patient.name} to see  #{appt.doctor.name} on #{appt.day}"
   end

@@ -1,12 +1,10 @@
 class Doctor
 extend Findable
   attr_reader :name, :id
-  @@all = []
 
   def initialize(name, id=nil)
     @id = id
     @name = name
-    @@all << self
   end
 
   def self.create_table
@@ -35,8 +33,8 @@ extend Findable
   end
 
 
-  def self.create(name: nil)
-    doctor = self.new(name: name)
+  def self.create(name)
+    doctor = self.new(name)
     doctor.save
   end
 
@@ -80,14 +78,14 @@ extend Findable
     end
   end
 
-  def self.find_or_create_by(name:)
+  def self.find_or_create_by(name)
     result = DB[:conn].execute("SELECT * FROM doctors WHERE name= ?", name)
     if !result.empty?
       result_data = result[0]
-      doct = Doctor.new(name: result_data[1])
+      doct = Doctor.new(result_data[1])
       doct.id = DB[:conn].execute("SELECT last_insert_rowid() FROM doctors")[0][0]
     else
-      doctor = Doctor.create(name: name)
+      doctor = Doctor.create(name)
     end
     doctor
     # binding.pry

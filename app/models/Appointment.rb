@@ -1,7 +1,7 @@
 class Appointment
   extend Findable
   attr_accessor :status, :day, :doctor, :patient
-  @@all = []
+
   def initialize(information)
     @status = "scheduled"
     # @time = time
@@ -10,7 +10,6 @@ class Appointment
     @day = information.fetch(:day)
     @doctor = information.fetch(:doctor)
     @patient = information.fetch(:patient)
-    @@all << self
   end
 
   # def self.all
@@ -28,8 +27,8 @@ class Appointment
       CREATE TABLE IF NOT EXISTS appointments (
         id INTEGER PRIMARY KEY,
         day TEXT,
-        doctor TEXT,
-        patient TEXT
+        doctor_id INTEGER,
+        patient_id INTEGER
       )
       SQL
     DB[:conn].execute(sql)
@@ -37,10 +36,10 @@ class Appointment
 
   def save
     sql = <<-SQL
-      INSERT INTO appointments (day, doctor, patient)
+      INSERT INTO appointments (day, doctor_id, patient_id)
       VALUES (?, ?, ?)
       SQL
-    DB[:conn].execute(sql, self.day, self.doctor, self.patient)
+    DB[:conn].execute(sql, self.day, self.doctor.id, self.patient.id)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM patients")[0][0]
   end
 
