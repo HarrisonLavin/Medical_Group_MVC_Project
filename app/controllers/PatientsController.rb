@@ -1,6 +1,5 @@
 class PatientController
 
-
   def self.create
       #Show the patient creation form, get input
       puts "What is the name of the Patient to add?"
