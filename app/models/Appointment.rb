@@ -22,6 +22,12 @@ class Appointment
   #   find_by_field(patient, patient)
   # end
 
+
+  def self.new_from_db(row)
+    appt = self.new({day: row[1], doctor: Doctor.find_by_id()})
+    new_doctor
+  end
+
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS appointments (

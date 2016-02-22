@@ -12,10 +12,7 @@ extend Findable
   end
 
   def self.new_from_db(row)
-    new_patient = self.new
-    new_patient.id = row[0]
-    new_patient.name = row[1]
-    new_patient.chart = row[2]
+    new_patient = self.new(row[1])
     new_patient
   end
 
@@ -40,7 +37,6 @@ extend Findable
   end
 
   def self.all
-    # @@all
     sql = <<-SQL
       SELECT *
       FROM patients

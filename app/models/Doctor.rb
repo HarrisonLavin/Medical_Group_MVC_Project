@@ -48,9 +48,7 @@ extend Findable
   end
 
   def self.new_from_db(row)
-    new_doctor = self.new
-    new_doctor.id = row[0]
-    new_doctor.name = row[1]
+    new_doctor = self.new(row[1])
     new_doctor
   end
 
