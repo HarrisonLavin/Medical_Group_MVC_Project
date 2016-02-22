@@ -4,7 +4,7 @@ class DoctorController
   def create
     puts "What is the name of the Doctor to add?"
     doctor_name = gets.chomp
-    Doctor.new(doctor_name)
+    Doctor.create(doctor_name)
   end
 
   def destory
