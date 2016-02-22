@@ -62,6 +62,6 @@ class Appointment
       WHERE name = ?
       LIMIT 1
     SQL
-
+  end 
 
 end
