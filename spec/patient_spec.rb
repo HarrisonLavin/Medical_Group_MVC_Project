@@ -5,8 +5,8 @@ require "pry"
 require "spec_helper"
 
 describe Patient do 
-  let(:oct_31) {Appointment.new(patient: "Holly", doctor: "Dr. Love", status: "booked")}
-  let(:nov_1) {Appointment.new(patient: "Holly", doctor: "Dr. Love", status: "booked")}
+  let(:oct_31) {Appointment.new(patient: "Holly", doctor: "Dr. Love", day: "Oct 31st")}
+  let(:nov_1) {Appointment.new(patient: "Holly", doctor: "Dr. Love", day: "Nov 1st")}
 
   let(:dr_love) {Doctor.new("Dr. Love")}
   let(:dr_crusher) {Doctor.new("Dr. Beverly Crusher")}
@@ -15,9 +15,9 @@ describe Patient do
   let(:harrison) {Patient.new("Harrison")}
 
   before do 
-    appointment = Appointment.new(patient: holly, doctor: dr_love, status: booked)
-    appointment = Appointment.new(patient: holly, doctor: dr_crusher, status: booked)
-    appointment = Appointment.new(patient: harrison, doctor: dr_love, status: booked)
+    appointment = Appointment.new(patient: holly, doctor: dr_love, day: "Oct 31st")
+    appointment = Appointment.new(patient: holly, doctor: dr_crusher, day: "Oct 31st")
+    appointment = Appointment.new(patient: harrison, doctor: dr_love, day: "Nov 1st")
   end
   
   describe "#appointments" do

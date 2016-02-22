@@ -22,8 +22,8 @@ extend Findable
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS patients (
-        id INTEGER PRIMARY KEY
-        name TEXT
+        id INTEGER PRIMARY KEY,
+        name TEXT,
         chart TEXT
       )
       SQL
@@ -67,14 +67,14 @@ extend Findable
     @chart << status
   end
 
-  def appointments
-    Appointments.all.find_all do |appt|
-      appt.patient == self
-    end
-  end
+  # def appointments
+  #   Appointments.all.find_all do |appt|
+  #     appt.patient == self
+  #   end
+  # end
 
-  def doctors
-    self.appointments.map {|appt| appt.doctor}
-  end
+  # def doctors
+  #   appointments.map {|appt| appt.doctor}
+  # end
 
 end

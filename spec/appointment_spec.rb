@@ -31,6 +31,9 @@ require "spec_helper"
   end
 
   describe "#save" do 
+    let!(:doctor_table){Doctor.create_table}
+    let!(:patient_table){Patient.create_table}
+    binding.pry
     let(:doctor) {Doctor.new("Dr. Love").save}
       let(:patient) {Patient.new("Holly").save}
       let(:day) {"Oct 31st"}

@@ -13,7 +13,7 @@ extend Findable
  
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS doctors (
-        id INTEGER PRIMARY KEY
+        id INTEGER PRIMARY KEY,
         name TEXT
       )
       SQL
