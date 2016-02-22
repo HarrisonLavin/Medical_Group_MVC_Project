@@ -10,7 +10,7 @@ class DoctorController
   def destory
     puts "Which Doctor?"
     doctor_name = gets.chomp.upcase
-    doctor = Doctor.find_by_name (doctor_name)
+    doctor = Doctor.find_by(doctor_name)
     removed_doc = Doctor.all.delete(doctor)
     puts "#{removed_doc} has been fired."
   end

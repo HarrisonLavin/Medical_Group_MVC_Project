@@ -6,7 +6,7 @@ class AppointmentController
     date = gets.chomp
     puts "With which Doctor?"
     doctor_name = gets.chomp
-    doctor = Doctor.find_or_create_by_name (doctor_name)
+    doctor = Doctor.find_or_create_by(name: doctor_name)
     puts "For which Patient?"
     patient_name = gets.chomp
     patient= Patient.find_by_name(patient_name)

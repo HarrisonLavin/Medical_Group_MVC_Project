@@ -75,7 +75,7 @@ extend Findable
   end
 
   def self.find_or_create_by(name:)
-    result = DB[:conn].execute("SELECT * FROM doctors WHERE name = #{name}")
+    result = DB[:conn].execute("SELECT * FROM doctors WHERE doctor.name= ?", name)
     if !result.empty?
       result_data = result[0]
       doct = Doctor.new(name: result_data[1])
