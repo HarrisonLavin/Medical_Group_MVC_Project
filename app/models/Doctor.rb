@@ -10,6 +10,7 @@ extend Findable
   end
 
   def self.create_table
+ 
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS doctors (
         id INTEGER PRIMARY KEY
@@ -45,7 +46,6 @@ extend Findable
     new_doctor = self.new
     new_doctor.id = row[0]
     new_doctor.name = row[1]
-    new_doctor.chart = row[2]
     new_doctor
   end
 
@@ -57,7 +57,7 @@ extend Findable
       LIMIT 1
     SQL
 
-    DB[:conn].ececute(sql, name).map do |row|
+    DB[:conn].execute(sql, name).map do |row|
       self.new_from_db(row)
     end.first
   end
