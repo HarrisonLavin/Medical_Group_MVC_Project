@@ -34,9 +34,15 @@ extend Findable
     end.first
   end
 
+
+  def self.create(name: nil)
+    doctor = self.new(name: name)
+    doctor.save
+  end
+
   def save
     sql = <<-SQL
-      INSERT INTO doctor (name)
+      INSERT INTO doctors (name)
       VALUES (?)
       SQL
     DB[:conn].execute(sql, self.name)
@@ -75,7 +81,7 @@ extend Findable
   end
 
   def self.find_or_create_by(name:)
-    result = DB[:conn].execute("SELECT * FROM doctors WHERE doctor.name= ?", name)
+    result = DB[:conn].execute("SELECT * FROM doctors WHERE name= ?", name)
     if !result.empty?
       result_data = result[0]
       doct = Doctor.new(name: result_data[1])
