@@ -5,8 +5,8 @@ require "pry"
 require "spec_helper"
 
 describe Patient do 
-  let(:oct_31) {Appointment.new(patient: "Holly", doctor: "Dr. Love" status: "booked")}
-  let(:nov_1) {Appointment.new(patient: "Holly", doctor: "Dr. Love" status: "booked")}
+  let(:oct_31) {Appointment.new(patient: "Holly", doctor: "Dr. Love", status: "booked")}
+  let(:nov_1) {Appointment.new(patient: "Holly", doctor: "Dr. Love", status: "booked")}
 
   let(:dr_love) {Doctor.new("Dr. Love")}
   let(:dr_crusher) {Doctor.new("Dr. Beverly Crusher")}
@@ -19,7 +19,7 @@ describe Patient do
     appointment = Appointment.new(patient: holly, doctor: dr_crusher, status: booked)
     appointment = Appointment.new(patient: harrison, doctor: dr_love, status: booked)
   end
-binding.pry
+  
   describe "#appointments" do
     it "should return all appointments for patient" do
       expect(holly.appointments.count).to eq(1)

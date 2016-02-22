@@ -5,8 +5,8 @@ require "spec_helper"
 
 describe Doctor do
   describe "#initialize=" do 
-    let(:oct_31) {Appointment.new(patient: "Holly", doctor: "Dr. Love" status: "booked")}
-    let(:nov_1) {Appointment.new(patient: "Holly", doctor: "Dr. Love" status: "booked")}
+    let(:oct_31) {Appointment.new(patient: "Holly", doctor: "Dr. Love", status: "booked")}
+    let(:nov_1) {Appointment.new(patient: "Holly", doctor: "Dr. Love", status: "booked")}
     ## revisit all of this. 
 
     let(:dr_love) {Doctor.new("Dr. Love")}
@@ -41,7 +41,7 @@ describe Doctor do
 
   describe "#find_by_name" do 
     let(:doctor){Doctor.new("Dr. Love")}
-    let(:doctor){Doctor.new("Dr. Beverly Crusher")
+    let(:doctor){Doctor.new("Dr. Beverly Crusher")}
 
   it "finds the doctor by name" do
     expect(Doctor.find_by_name("Dr. Love")).to eq (doctor)
