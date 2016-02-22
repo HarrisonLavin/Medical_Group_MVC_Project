@@ -23,17 +23,21 @@ while action != "exit"
       "ERROR: Not a valid resource, try doctor, appointment, or patient"
     end
   when "review"
-    puts "What resource would you like to review?"
-    resource = gets.chomp
-    case resource
-    when "appointment"
-      Appointment.all.each do |appt|
-        puts "#{appt.patient.name} is scheduled to see #{appt.doctor.name} on date #{appt.date}"
+    while resource != "exit"
+      puts "What resource would you like to review?"
+      resource = gets.chomp
+      case resource
+      when "appointment"
+        Appointment.all.each do |appt|
+          puts "#{appt.patient.name} is scheduled to see #{appt.doctor.name} on date #{appt.date}"
+        end
+      when "doctor"
+        Doctor.all.each {|doc| puts doc.name}
+      when "patient"
+        Patient.all.each {|pat| puts pat.name}
+      else
+        puts "ERROR: Not a valid resource, try doctor, appointment, or patient"
       end
-    when "doctor"
-      Doctor.all.each {|doc| puts doc.name}
-    when "patient"
-      Patient.all.each {|pat| puts pat.name}
     end
   when "update"
     puts "What resource would you like to update?"
@@ -62,9 +66,8 @@ while action != "exit"
       #Create the patient
       pat = PatientController.new
       pat.destroy
-
     end
   else
     puts "ERROR: Valid actions are Create, Review, Update, Destroy"
-end
+  end
 end
