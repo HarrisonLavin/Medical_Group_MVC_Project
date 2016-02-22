@@ -46,7 +46,6 @@ extend Findable
     new_doctor = self.new
     new_doctor.id = row[0]
     new_doctor.name = row[1]
-    new_doctor.chart = row[2]
     new_doctor
   end
 

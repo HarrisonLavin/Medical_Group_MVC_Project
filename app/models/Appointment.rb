@@ -1,13 +1,13 @@
 class Appointment
   extend Findable
-  attr_accessor :status, :date, :doctor, :patient
+  attr_accessor :status, :day, :doctor, :patient
   @@all = []
   def initialize(information)
     @status = "scheduled"
     # @time = time
     # @doctor = doctor
     # @patient = patient
-    @date = information.fetch(:date)
+    @day = information.fetch(:day)
     @doctor = information.fetch(:doctor)
     @patient = information.fetch(:patient)
     @@all << self
@@ -17,8 +17,8 @@ class Appointment
   #   @@all
   # end
 
-  def find_appoint(date, doctor, patient)
-    find_by_field(date, date) &
+  def find_appoint(day, doctor, patient)
+    find_by_field(day, day) &
     find_by_field(doctor, doctor) &
     find_by_field(patient, patient)
   end
@@ -26,9 +26,9 @@ class Appointment
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS appointments (
-        id INTEGER PRIMARY KEY
-        date INTEGER
-        doctor TEXT
+        id INTEGER PRIMARY KEY,
+        day TEXT,
+        doctor TEXT,
         patient TEXT
       )
       SQL
@@ -37,7 +37,7 @@ class Appointment
 
   def save
     sql = <<-SQL
-      INSERT INTO appointments (name, date, doctor, patient)
+      INSERT INTO appointments (name, day, doctor, patient)
       VALUES (?, ?, ?, ?)
       SQL
     DB[:conn].execute(sql, self.name, self.chart)

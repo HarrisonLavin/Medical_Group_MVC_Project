@@ -6,9 +6,9 @@ require "spec_helper"
     describe "#initialize=" do
       let(:doctor) {Doctor.new("Dr. Love")}
       let(:patient) {Patient.new("Holly")}
-      let(:date) {"Oct 31st"}
+      let(:day) {"Oct 31st"}
       let(:appointment) {Appointment.new ({doctor:doctor,
-        patient:patient, date:date})}
+        patient:patient, day:day})}
 
     it "sets the correct doctor and patient" do
       appointment.doctor = doctor
@@ -17,8 +17,8 @@ require "spec_helper"
       appointment.patient = patient
       expect(appointment.patient).to eq(patient)
 
-      appointment.date = date
-      expect(appointment.date).to eq ("Oct 31st")
+      appointment.day = day
+      expect(appointment.day).to eq ("Oct 31st")
     end
   end
 
@@ -33,6 +33,7 @@ require "spec_helper"
   describe "#save" do 
     it "saves an instance of appointment class in the table" do 
       Appointment.create_table
+      
       oct_31.save
       expect(oct_31.id).to eq(1)
       expect(DB[:conn].execute("SELECT * FROM appointments")).to eq([[1, "Oct 31st", "booked"]])
@@ -54,14 +55,14 @@ require "spec_helper"
 
   describe "#find_appoint" do
     let(:doctor) { Doctor.new("Dr. Love")}
-    let(:date) {Date.new("Oct 31st")}
+    let(:day) {"Oct 31st"}
     let(:patient){Patient.new("Holly")}
 
     it "finds the appointment" do
       Appointment.all.clear
       doctor 
       patient
-      date
+      day
       expect(Appointment.find_appoint("doctor")).to eq (doctor)
     end
   end
