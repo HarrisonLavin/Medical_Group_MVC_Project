@@ -21,7 +21,6 @@ require "spec_helper"
       expect(appointment.date).to eq ("Oct 31st")
     end
   end
-  binding.pry
 
   describe "#all" do 
     before do 

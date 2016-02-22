@@ -47,7 +47,7 @@ while action != "exit"
       pat = PatientController.new
       pat.update
     end
-  when "destory" 
+  when "destroy" 
     puts "What resource would you like to destroy?"
     resource = gets.chomp
     case resource
@@ -65,6 +65,6 @@ while action != "exit"
 
     end
   else
-    puts "ERROR: Valid actions are Create, Review, Update, Destory"
+    puts "ERROR: Valid actions are Create, Review, Update, Destroy"
 end
 end
