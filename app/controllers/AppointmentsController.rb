@@ -13,7 +13,7 @@ class AppointmentController
     patient= Patient.find_or_create_by(patient_name)
     appt= Appointment.new(day: date, doctor: doctor, patient: patient)
     # binding.pry
-    puts "Great, you've scheduled an appoint for #{patient_name} to see #{doctor_name} on #{appt.day}"
+    puts "Great, you've scheduled an appoint for #{patient_name} to see Dr. #{doctor_name} on #{appt.day}"
   end
 
 

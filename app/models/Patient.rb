@@ -23,8 +23,7 @@ extend Findable
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS patients (
         id INTEGER PRIMARY KEY,
-        name TEXT,
-        chart TEXT
+        name TEXT
       )
       SQL
     DB[:conn].execute(sql)
