@@ -13,6 +13,7 @@ extend Findable
     row= DB[:conn].execute(sql)
     doc = Doctor.new_from_db(row)
     @id = id
+    binding.pry
     doc
   end
 
